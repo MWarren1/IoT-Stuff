@@ -44,12 +44,12 @@ def getCPUuse():
 ### End of Fuctions
 
 # Define ENDPOINT, CLIENT_ID and TOPIC
-ENDPOINT = "a30knwf2xeu9vh-ats.iot.eu-west-2.amazonaws.com"
+ENDPOINT = "<PUT YOUR ENDPOINT HERE>"
 TOPIC = "test/device"
 # Paths to Amazon CA, Private cert and key
-PATH_TO_CERT = "/home/pi/aws-iot-core-raspberry-pi-demo/c4b1b5b8c9-certificate.pem.crt"
-PATH_TO_KEY = "/home/pi/aws-iot-core-raspberry-pi-demo/c4b1b5b8c9-private.pem.key"
-PATH_TO_ROOT = "/home/pi/aws-iot-core-raspberry-pi-demo/AmazonRootCA1.pem"
+PATH_TO_CERT = "<PUT THE PATH TO YOUR CERT HERE>"
+PATH_TO_KEY = "<PUT THE PATH TO YOUR KEY HERE>"
+PATH_TO_ROOT = "<PUT THE PATH TO AMAZON CA HERE>"
 # How often to publish  status in seconds
 SLEEPTIME = 10
 # Gets hostname
