@@ -43,16 +43,16 @@ def aws_publish_message(topic, message):
     connect_future.result()
     #print("Connected!")
     ### MQTT connection established
-    mqtt_connection.publish(topic=TOPIC, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
+    mqtt_connection.publish(topic=topic, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
     print("Published: '" + json.dumps(message) + "' to the topic: " + topic)
     disconnect_future = mqtt_connection.disconnect()
     disconnect_future.result()
     return()                          
-### End of Fuction ###
+### End of Fuctions
 
 
-### Examples ###
-aws_publish_message("test/function", {"fuction-test" : "WORKING", "test" : 11 })
+### Examples
+aws_publish_message("test/function", {"ALERT" : "ALERT" })
 
 message =  {"fuction-test" : "WORKING", "test" : 10 }
 topic = "test/function"
