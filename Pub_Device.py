@@ -5,11 +5,13 @@
 
 ### Published message example ###
 # {
-#   "ramusage": 10.7,
-#   "uptime": 8509,
+#   "uptime": 15289,
 #   "hostname": "R-Pi-Zero",
-#   "cpuusage": 1.2,
-#   "cputemp": 38.6
+#   "cpuusage": 2.6,
+#   "time": "14:30:13",
+#   "cputemp": 36.5,
+#   "date": "2021/01/19",
+#   "ramusage": 10.8
 # }
 
 from awscrt import io, mqtt, auth, http
@@ -81,6 +83,10 @@ print("Connected!")
 print('Begin Publish')
 forever = "true"
 while forever == "true":
+    # Get current time/date
+    time_raw = t.localtime()
+    current_time = t.strftime("%H:%M:%S", time_raw)
+    current_date = t.strftime("%Y/%m/%d", time_raw)
     # Get Uptime
     uptime_raw = os.popen("awk '{print $1}' /proc/uptime").readline()
     uptime = int(float(uptime_raw.strip('\n')))
@@ -91,7 +97,7 @@ while forever == "true":
     # Get RAM Usage in %
     RAMstats = getRAMinfo()
     RAMusage = round((float(RAMstats[1])/float(RAMstats[0]))*100,1)
-    message = {"hostname" : CLIENT_ID, "uptime" : uptime, "cputemp" : CPUtemp, "cpuusage" : CPUusge, "ramusage" : RAMusage }
+    message = {"date" : current_date, "time" : current_time, "hostname" : CLIENT_ID, "uptime" : uptime, "cputemp" : CPUtemp, "cpuusage" : CPUusge, "ramusage" : RAMusage }
     mqtt_connection.publish(topic=TOPIC, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
     print("Published: '" + json.dumps(message) + "' to the topic: " + "'test/device'")
     t.sleep(SLEEPTIME)
