@@ -87,6 +87,8 @@ while forever == "true":
     time_raw = t.localtime()
     current_time = t.strftime("%H:%M:%S", time_raw)
     current_date = t.strftime("%Y/%m/%d", time_raw)
+    # Generate key
+    key = CLIENT_ID + "-" + str(t.time())
     # Get Uptime
     uptime_raw = os.popen("awk '{print $1}' /proc/uptime").readline()
     uptime = int(float(uptime_raw.strip('\n')))
@@ -97,9 +99,9 @@ while forever == "true":
     # Get RAM Usage in %
     RAMstats = getRAMinfo()
     RAMusage = round((float(RAMstats[1])/float(RAMstats[0]))*100,1)
-    message = {"date" : current_date, "time" : current_time, "hostname" : CLIENT_ID, "uptime" : uptime, "cputemp" : CPUtemp, "cpuusage" : CPUusge, "ramusage" : RAMusage }
+    message = {"key" : key, "date" : current_date, "time" : current_time, "hostname" : CLIENT_ID, "uptime" : uptime, "cputemp" : CPUtemp, "cpuusage" : CPUusge, "ramusage" : RAMusage }
     mqtt_connection.publish(topic=TOPIC, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
-    print("Published: '" + json.dumps(message) + "' to the topic: " + "'test/device'")
+    print("Published: '" + json.dumps(message) + "' to the topic: " + TOPIC)
     t.sleep(SLEEPTIME)
 print('Publish End')
 disconnect_future = mqtt_connection.disconnect()
