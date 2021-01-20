@@ -10,7 +10,7 @@ import json
 import os #only needed if you are getting the hostname form OS
 
 ### Following variables need to be defined
-# Define ENDPOINT, CLIENT_ID and TOPIC
+# Define ENDPOINT, CLIENT_ID
 CLIENT_ID = os.popen('hostname').readline().strip('\n') # This grabs the hostname but can be replaced witha string
 ENDPOINT = "<PUT YOUR ENDPOINT HERE>"
 # Paths to Amazon CA, Private cert and key
