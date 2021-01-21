@@ -19,6 +19,7 @@ from awsiot import mqtt_connection_builder
 import time as t
 import json
 import os
+import awsconfig
 
 ### Defining Fuctions
 # Return CPU temperature as a character string, temp in 'C                                      
@@ -45,17 +46,19 @@ def getCPUuse():
 )))
 ### End of Fuctions
 
-# Define ENDPOINT, CLIENT_ID and TOPIC
-ENDPOINT = "<PUT YOUR ENDPOINT HERE>"
+# Define Topic to publish message to
 TOPIC = "test/device"
-# Paths to Amazon CA, Private cert and key
-PATH_TO_CERT = "<PUT THE PATH TO YOUR CERT HERE>"
-PATH_TO_KEY = "<PUT THE PATH TO YOUR KEY HERE>"
-PATH_TO_ROOT = "<PUT THE PATH TO AMAZON CA HERE>"
 # How often to publish  status in seconds
 SLEEPTIME = 10
+
+# AWS Endpoint
+ENDPOINT = awsconfig.ENDPOINT
+# Paths to Amazon CA, Private cert and key
+PATH_TO_CERT = awsconfig.PATH_TO_CERT
+PATH_TO_KEY = awsconfig.PATH_TO_KEY
+PATH_TO_ROOT = awsconfig.PATH_TO_ROOT
 # Gets hostname
-CLIENT_ID = os.popen('hostname').readline().strip('\n')
+CLIENT_ID = awsconfig.CLIENT_ID
 
 ### Start of creating MQTT connection
 event_loop_group = io.EventLoopGroup(1)
