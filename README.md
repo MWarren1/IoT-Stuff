@@ -1,11 +1,13 @@
 # IoT-Stuff
 dumping ground for IoT stuff
 
-## Requirments
+## Requirments/Setup
 the following packages/modules are needed for all these scripts
-sudo apt-get install cmake
-sudo apt-get install libssl-dev
-pip install awsiotsdk
+* sudo apt-get install cmake
+* sudo apt-get install libssl-dev
+* pip install awsiotsdk
+
+also the all your aws variables need to be added to awsconfig.py
 
 ## Scripts
 
