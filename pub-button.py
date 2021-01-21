@@ -15,16 +15,18 @@ import time as t
 import json
 import os #only needed if you are getting the hostname form OS
 from gpiozero import Button
+import awsconfig #import config needed for aws
 
-
-### Following variables need to be defined
-# Define ENDPOINT, CLIENT_ID
-CLIENT_ID = os.popen('hostname').readline().strip('\n') # This grabs the hostname but can be replaced witha string
-ENDPOINT = "<PUT YOUR ENDPOINT HERE>"
+### Following defined by awsconfig.py file ###
+# AWS Endpoint
+ENDPOINT = awsconfig.ENDPOINT
+# Gets hostname
+CLIENT_ID = awsconfig.CLIENT_ID
 # Paths to Amazon CA, Private cert and key
-PATH_TO_CERT = "<PUT THE PATH TO YOUR CERT HERE>"
-PATH_TO_KEY = "<PUT THE PATH TO YOUR KEY HERE>"
-PATH_TO_ROOT = "<PUT THE PATH TO AMAZON CA HERE>
+PATH_TO_CERT = awsconfig.PATH_TO_CERT
+PATH_TO_KEY = awsconfig.PATH_TO_KEY
+PATH_TO_ROOT = awsconfig.PATH_TO_ROOT
+### End of awsconfig.py variables ###
 
 
 ### Fuction ###
