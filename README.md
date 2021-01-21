@@ -2,7 +2,7 @@
 dumping ground for IoT stuff
 
 ## Requirments/Setup
-the following packages/modules are needed for all these scripts
+the following packages/modules are needed for all these scripts:
 * sudo apt-get install cmake
 * sudo apt-get install libssl-dev
 * pip install awsiotsdk
