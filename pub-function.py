@@ -1,23 +1,23 @@
 ### Fuctions to Publish messages to AWS IoT Core
 ### Tested on Raspbian but should work on all linux based OS's
-### AWS IoT SDK for Python v2 is needed install using the following command:
-### pip install awsiotsdk
 
 from awscrt import io, mqtt, auth, http
 from awsiot import mqtt_connection_builder
 import time as t
 import json
 import os #only needed if you are getting the hostname form OS
+import awsconfig #import config needed for aws
 
-### Following variables need to be defined
-# Define ENDPOINT, CLIENT_ID
-CLIENT_ID = os.popen('hostname').readline().strip('\n') # This grabs the hostname but can be replaced witha string
-ENDPOINT = "<PUT YOUR ENDPOINT HERE>"
+### Following defined by awsconfig.py file ###
+# AWS Endpoint
+ENDPOINT = awsconfig.ENDPOINT
+# Gets hostname
+CLIENT_ID = awsconfig.CLIENT_ID
 # Paths to Amazon CA, Private cert and key
-PATH_TO_CERT = "<PUT THE PATH TO YOUR CERT HERE>"
-PATH_TO_KEY = "<PUT THE PATH TO YOUR KEY HERE>"
-PATH_TO_ROOT = "<PUT THE PATH TO AMAZON CA HERE>"
-
+PATH_TO_CERT = awsconfig.PATH_TO_CERT
+PATH_TO_KEY = awsconfig.PATH_TO_KEY
+PATH_TO_ROOT = awsconfig.PATH_TO_ROOT
+### End of awsconfig.py variables ###
 
 ### Fuction ###
 def aws_publish_message(topic, message):
@@ -52,8 +52,8 @@ def aws_publish_message(topic, message):
 
 
 ### Examples
-aws_publish_message("test/function", {"ALERT" : "ALERT" })
+aws_publish_message("test/test", {"message" : "Hello" })
 
 message =  {"fuction-test" : "WORKING", "test" : 10 }
-topic = "test/function"
+topic = "test/test"
 aws_publish_message(topic, message)
