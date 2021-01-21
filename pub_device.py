@@ -1,6 +1,8 @@
 ### script that publishes devices stats to AWS
 ### Tested on Raspbian but should work on all linux based OS's
-### AWS IoT SDK for Python v2 is needed install using the following command:
+### cmake, libssl-dev and AWS IoT SDK for Python v2 is needed install using the following command:
+### sudo apt-get install cmake
+### sudo apt-get install libssl-dev
 ### pip install awsiotsdk
 
 ### Published message example ###
