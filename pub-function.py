@@ -3,7 +3,6 @@
 
 from awscrt import io, mqtt, auth, http
 from awsiot import mqtt_connection_builder
-import time as t
 import json
 import os #only needed if you are getting the hostname form OS
 import awsconfig #import config needed for aws
