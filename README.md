@@ -27,22 +27,22 @@ place sensor pointing at a hard object like a wall and run script, while the sta
 
 #### Circuit Diagram
 ```
- +5v------------------------------------\
-                                |\
-                               Vcc\						 
-                          --------------\
- GPIO18---------------Trig| Ultrasonic |\
- GPIO24---R1----------Echo|   Sensor   |\
-                   |      --------------\
-                   |           Gnd\
- GPIO26--R1-----   |            |\
- GPIO19--R1-   |   R2           |\
-           |   |   |            |\
-          LED LED  |            |\
-           |   |   |            |\
- Gnd------------------------------------\
+ +5v------------------------------------
+                                |
+                               Vcc						 
+                          --------------
+ GPIO18---------------Trig| Ultrasonic |
+ GPIO24---R1----------Echo|   Sensor   |
+                   |      --------------
+                   |           Gnd
+ GPIO26--R1-----   |            |
+ GPIO19--R1-   |   R2           |
+           |   |   |            |
+          LED LED  |            |
+           |   |   |            |
+ Gnd------------------------------------
  
- R1 = 330 ohm\
- R2 = 470 ohm\
- Ultrasonic Sensor = HC-SR04 Module\
+ R1 = 330 ohm
+ R2 = 470 ohm
+ Ultrasonic Sensor = HC-SR04 Module
 ```
