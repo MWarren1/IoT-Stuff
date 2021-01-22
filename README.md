@@ -22,7 +22,7 @@ shows basic use of Raspberry Pi's GPIO to publish message when a button is press
 
 ### Distance-Monitor.py
 Script to measure distance and publish messages is distance is less than 75% of the baseline distance
-##### How to use:
+#### How to use:
 place sensor pointing at a hard object like a wall and run script, while the status LED is flashing(around 5 secs) the sensor is taking the baseline distance. When the status LED is solid the script is now monitoring distance and while the distance is 75% or less of the baseline and message will published to AWS IoT Core.
 
 #### Circuit Diagram
