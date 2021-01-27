@@ -49,7 +49,7 @@ place sensor pointing at a hard object like a wall and run script, while the sta
 
 ### sensor_sim.py
 script that takes a csv file and publishes each line of the dataset with a specified delay. to try and simulate an IoT sensor
-
+```
 usage: sensor simulator [-h] --dataset DATASET --delay DELAY --topic TOPIC
 
 simulates a IoT sensor by publishing messages from a data set in a csv file
@@ -59,9 +59,8 @@ arguments:
   --dataset DATASET  file input(must be csv)
   --delay DELAY      time in seconds between published messages
   --topic TOPIC      topic that messages will get published to, needs to be in quotes
-
+```
 #### Example
 the follow example uses the csv file called data-set.csv in the present working directory, it will publish to the topic test/test every 5 seconds
 
 python sensor-sim.py --dataset data-set.csv --delay 5 --topic "test/test"
-
