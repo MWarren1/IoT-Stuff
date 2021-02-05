@@ -67,7 +67,7 @@ def rek_resp_mask_summary(response):
 ### End of Function ###
 
 # parse cli switches
-parser = argparse.ArgumentParser(prog='rek-detect-mask', description='uses AWS Rekognition to detect face masks in photos')
+parser = argparse.ArgumentParser(prog='rek-detect-mask.py', description='uses AWS Rekognition to detect face masks in photos')
 parser.add_argument('--photo', required=True, help='this is the path to the photo')
 args = parser.parse_args()
 
