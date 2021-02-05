@@ -2,14 +2,22 @@
 dumping ground for IoT stuff
 
 ## Requirments/Setup
-the following packages/modules are needed for all these scripts:
+### AWS IoT Core setup
+the following packages/modules are needed for all these scripts that involve AWS IoT Core. Run the following commands to install:
 * sudo apt-get install cmake
 * sudo apt-get install libssl-dev
-* pip install awsiotsdk
+* sudo pip install awsiotsdk
 
-also the all your aws variables need to be added to awsconfig.py
+also you will need to register your device with AWS IoT and the all your aws variables need to be added to awsconfig.py
 
-## Scripts
+### AWS Rekognition setup
+the following module is needed for python, i recommend using python 3 for these scripts. Run the following commands to install:
+* sudo python3 -m pip install boto3
+
+you will also need to generate a access key ID and an access key secret on AWs for the scripts to use. instructions on where to put these can be found here:
+https://docs.aws.amazon.com/rekognition/latest/dg/setup-awscli-sdk.html 
+
+## AWS IoT Core Scripts
 
 ### Pub_Device.py
 publishes stats about the deivce to AWS until stopped
@@ -64,3 +72,33 @@ arguments:
 the follow example uses the csv file called data-set.csv in the present working directory, it will publish to the topic test/test every 5 seconds
 
 python sensor-sim.py --dataset data-set.csv --delay 5 --topic "test/test"
+
+
+## AWS Rekognition Scripts
+
+### rek-label-photo.py
+script that uploads a local photo to AWS Rekognition and prints all labels that Rekognition detected
+
+```
+usage: rek-label-photo.py [-h] --photo PHOTO
+
+uses AWS Rekognition to label what in in the photo
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --photo PHOTO  this is the path to the photo
+```
+
+### rek-detect-mask.py
+script that uploads local photo and detect the number of people and if they are wearing face masks
+
+```
+usage: rek-detect-mask.py [-h] --photo PHOTO
+
+uses AWS Rekognition to detect face masks in photos
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --photo PHOTO  this is the path to the photo
+```
+
