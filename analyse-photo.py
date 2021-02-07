@@ -1,5 +1,5 @@
-### analyses photo is a script that doe sthe following
-### 1. uploads a photo to an S3 bucker
+### analyses photo is a script that does the following
+### 1. uploads a photo to an S3 bucket
 ### 2. gets Rekognition to analyse the photo and provide labels
 ### 3. adds an entry to a dynamoDB table with url, key_id, epoch time and labels
 
@@ -55,7 +55,7 @@ def Dyn_DB_Put(dyn_db_table, entry):
 # parse cli switches
 parser = argparse.ArgumentParser(prog='analyse-photo.py', description='uploads photo to S3 Bucket and gets Rekognition to label what in in the photo, then adds this to a dynamoDB')
 parser.add_argument('--photo', required=True, help='the path to the photo')
-parser.add_argument('--bucket', required=True, help='name of bucker to upload files')
+parser.add_argument('--bucket', required=True, help='name of bucket to upload files')
 parser.add_argument('--db', required=True, help='name of the dynamoDB table put entries')
 args = parser.parse_args()
 # setting up variables
