@@ -102,3 +102,20 @@ optional arguments:
   --photo PHOTO  this is the path to the photo
 ```
 
+### analyse-photo.py
+analyses photo is a script that does the following:
+1. uploads a photo to an S3 bucket
+2. gets Rekognition to analyse the photo and provide labels
+3. adds an entry to a dynamoDB table with url, key_id, epoch time and labels
+
+```
+usage: analyse-photo.py [-h] --photo PHOTO --bucket BUCKET --db DB
+
+uploads photo to S3 Bucket and gets Rekognition to label what in in the photo, then adds this to a dynamoDB
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --photo PHOTO    the path to the photo
+  --bucket BUCKET  name of bucket to upload files
+  --db DB          name of the dynamoDB table put entries
+```
