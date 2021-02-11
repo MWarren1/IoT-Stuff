@@ -35,19 +35,28 @@ def rek_resp_mask_details(response):
     print('\nFace masks detected in image ' + photo) 
     print('\n---------------\nDetected people\n---------------')   
     for person in response['Persons']: 
-        print('Person ID: ' + str(person['Id']))
+        print('Person ID: ' + str((person['Id']+1)))
         body_parts = person['BodyParts']
+        len_body_part = len(body_parts)
+        num_body_part = 1
         if len(body_parts) == 0:
-            print ('No body parts found')
+            print ('\tNo Face Dectected')
         else:
+            face = "false"
             for body_part in body_parts:
+                
                 if body_part['Name'] == 'FACE':
+                    face = "true"
                     ppe_items = body_part['EquipmentDetections']
                     if len(ppe_items) ==0:
-                        print ('\tNo Face Mask detected')
+                        print ('\tNo Face MASK detected')
                     else:    
                         for ppe_item in ppe_items:
                             print('\t' + ppe_item['Type'] + '\tConfidence: ' + str(ppe_item['Confidence']))
+                if len_body_part == num_body_part:
+                    if face == "false":
+                        print ('\tNo Face Dectected')
+                num_body_part = num_body_part + 1
     return()
 
 # uses response from rek
